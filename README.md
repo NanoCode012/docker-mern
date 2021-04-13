@@ -12,7 +12,7 @@ This repo aims to create a one-stop script which would allow the setup of a MERN
 # Usage
 
 ```bash
-wget https://raw.githubusercontent.com/NanoCode012/docker-mern/main/setup-server.sh
+wget https://raw.githubusercontent.com/NanoCode012/docker-mern/main/setup-server.sh -O setup-server.sh
 chmod +x setup-server.sh
 ./setup-server.sh
 ```
