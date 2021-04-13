@@ -3,7 +3,7 @@
 
 echo "Docker-Mern server startup script by NanoCode012"
 echo "Get latest at https://github.com/NanoCode012/docker-mern/"
-echo "\n"
+echo -e "\n"
 
 BRANCH="inital" # for dev only
 
@@ -42,10 +42,11 @@ if [ ! -d "docker-mern" ]; then
     mkdir docker-mern
 else
     echo "Moving old docker-mern folder to docker-mern.backup folder"
-    mv docker-mern docker-mern.backup
+    rm -r docker-mern.backup
+    mv docker-mern/* docker-mern.backup
     mkdir docker-mern
     echo "Successfully moved to docker-mern.backup folder"
-    echo "\n"
+    echo -e "\n"
 fi
 
 cd docker-mern
@@ -71,7 +72,7 @@ echo "CLIENT_NAME=$CLIENT_NAME"         >> .env
 echo "BACKEND_NAME=$BACKEND_NAME"       >> .env
 echo "DB_NAME=$DB_NAME"                 >> .env
 echo "PROXY_NAME=$PROXY_NAME"           >> .env
-echo "\n"
+echo -e "\n"
 
 # Create client app
 
