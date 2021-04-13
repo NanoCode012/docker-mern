@@ -42,6 +42,7 @@ else
     echo "Moving old docker-mern folder to docker-mern.backup folder"
     rm -rf docker-mern.backup
     mv docker-mern/* docker-mern.backup
+    rm -r docker-mern
     mkdir docker-mern
     echo "Successfully moved to docker-mern.backup folder"
     echo ""
