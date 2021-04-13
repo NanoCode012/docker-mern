@@ -3,6 +3,14 @@
 
 echo "Docker-Mern server startup script by NanoCode012"
 echo "Get latest at https://github.com/NanoCode012/docker-mern/"
+echo "\n"
+
+BRANCH="inital" # for dev only
+
+SCRIPT_PATH="$(dirname "$(readlink -f "$0")")"
+SCRIPT_NAME="${0##*/}"
+echo $SCRIPT_PATH
+echo $SCRIPT_NAME
 
 # Function to read input from user with a prompt
 # Credits: https://github.com/TheRemote/MinecraftBedrockServer/blob/1f27b8ab82f920bb967d1c27ee2fd120a484c99c/SetupMinecraft.sh
@@ -37,14 +45,15 @@ else
     mv docker-mern docker-mern.backup
     mkdir docker-mern
     echo "Successfully moved to docker-mern.backup folder"
+    echo "\n"
 fi
 
 cd docker-mern
 
 # Get docker-compose files
-# wget https://raw.githubusercontent.com/NanoCode012/docker-mern/main/docker-compose.yml
-# wget https://raw.githubusercontent.com/NanoCode012/docker-mern/main/docker-compose.prod.yml
-# wget https://raw.githubusercontent.com/NanoCode012/docker-mern/main/docker-compose.override.yml
+# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.yml"
+# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.prod.yml"
+# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.override.yml"
 
 # Create env file
 touch .env
@@ -62,3 +71,8 @@ echo "CLIENT_NAME=$CLIENT_NAME"         >> .env
 echo "BACKEND_NAME=$BACKEND_NAME"       >> .env
 echo "DB_NAME=$DB_NAME"                 >> .env
 echo "PROXY_NAME=$PROXY_NAME"           >> .env
+echo "\n"
+
+# Create client app
+
+
