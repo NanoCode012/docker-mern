@@ -3,14 +3,12 @@
 
 echo "Docker-Mern server startup script by NanoCode012"
 echo "Get latest at https://github.com/NanoCode012/docker-mern/"
-echo -e "\n"
+echo ""
 
 BRANCH="inital" # for dev only
 
 SCRIPT_PATH="$(dirname "$(readlink -f "$0")")"
 SCRIPT_NAME="${0##*/}"
-echo $SCRIPT_PATH
-echo $SCRIPT_NAME
 
 # Function to read input from user with a prompt
 # Credits: https://github.com/TheRemote/MinecraftBedrockServer/blob/1f27b8ab82f920bb967d1c27ee2fd120a484c99c/SetupMinecraft.sh
@@ -42,11 +40,11 @@ if [ ! -d "docker-mern" ]; then
     mkdir docker-mern
 else
     echo "Moving old docker-mern folder to docker-mern.backup folder"
-    rm -r docker-mern.backup
+    rm -rf docker-mern.backup
     mv docker-mern/* docker-mern.backup
     mkdir docker-mern
     echo "Successfully moved to docker-mern.backup folder"
-    echo -e "\n"
+    echo ""
 fi
 
 cd docker-mern
@@ -72,7 +70,7 @@ echo "CLIENT_NAME=$CLIENT_NAME"         >> .env
 echo "BACKEND_NAME=$BACKEND_NAME"       >> .env
 echo "DB_NAME=$DB_NAME"                 >> .env
 echo "PROXY_NAME=$PROXY_NAME"           >> .env
-echo -e "\n"
+echo ""
 
 # Create client app
 
