@@ -41,12 +41,14 @@ if [ ! -d "docker-mern" ]; then
 else
     echo "Moving old docker-mern folder to docker-mern.backup folder"
 
-    echo "Deleting backup folder"
-    rm -rf docker-mern.backup
-    mv docker-mern/* docker-mern.backup
+    if [ ! -d "docker-mern.backup" ]; then
+        echo "Deleting backup folder"
+        rm -rf docker-mern.backup
+        echo "Deleted backup folder"
+    fi
+    mv docker-mern docker-mern.backup
     rm -r docker-mern
-    echo "Deleted backup folder"
-    
+
     mkdir docker-mern
     echo "Successfully moved to docker-mern.backup folder"
     echo ""
