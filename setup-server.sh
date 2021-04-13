@@ -37,6 +37,7 @@ else
     mv docker-mern docker-mern.backup
     mkdir docker-mern
     echo "Successfully moved to docker-mern.backup folder"
+fi
 
 cd docker-mern
 
