@@ -213,11 +213,11 @@ echo "Downloaded env files"
 if [ "$barebone_run" = true ]; then
     MONGO_INITDB_DATABASE="app"
     MONGO_INITDB_USERNAME="nanocode012"
-    MONGO_INITDB_PASSWORD="averysecurepassword,butpleasechangeme0-0"
+    MONGO_INITDB_PASSWORD="averysecurepassword,butpleasechangeme0"
 else 
     read_with_prompt MONGO_INITDB_DATABASE "MongoDB Database Name" "app"
     read_with_prompt MONGO_INITDB_USERNAME "MongoDB Username" "nanocode012"
-    read_with_prompt MONGO_INITDB_PASSWORD "MongoDB Username" "averysecurepassword,butpleasechangeme0-0"
+    read_with_prompt MONGO_INITDB_PASSWORD "MongoDB Password" "averysecurepassword,butpleasechangeme0"
 fi
 
 echo "Replacing env file with env variables"
