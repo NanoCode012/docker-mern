@@ -1,5 +1,19 @@
 #!/bin/bash
-# Run: ./setup-server.sh
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#                                                                       +
+# Server Setup Script - set up docker mern on a new server              +
+#                                                                       +
+# https://github.com/NanoCode012/docker-mern                            +
+#                                                                       +
+# Script developed by                                                   +
+#   Chanvichet Vong <kevinvong@rocketmail.com>                          +
+#                                                                       +
+# Copyright 2021 Chanvichet Vong                                        +
+# License at                                                            +
+#   https://github.com/NanoCode012/docker-mern/blob/main/LICENSE        +
+#                                                                       +
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 echo "Docker-Mern server startup script by NanoCode012"
 echo "Get latest at https://github.com/NanoCode012/docker-mern/"
