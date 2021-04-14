@@ -76,7 +76,6 @@ echo "Downloading .*ignore files"
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.gitignore" -qO .gitignore
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.dockerignore" -qO .dockerignore
 echo "Downloaded .*ignore files"
-echo ""
 
 # Get docker-compose files
 # wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.yml" -qO docker-compose.yml
