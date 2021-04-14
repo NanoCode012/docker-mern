@@ -26,8 +26,11 @@ BRANCH="initial" # for dev only
 SCRIPT_PATH="$(dirname "$(readlink -f "$0")")"
 SCRIPT_NAME="${0##*/}"
 
+echo "Downloading base scripts"
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/local-scripts.sh" -qO local-scripts.sh
 source local-scripts.sh
+echo "Downloaded base scripts"
+echo ""
 
 echo "Folder setup"
 echo "============"
