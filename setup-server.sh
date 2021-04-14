@@ -136,6 +136,18 @@ wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/
 echo "Downloaded files"
 echo ""
 
+cd ..
+
+# Create db
+echo "Database"
+echo "========"
+
+mkdir db
+cd db
+
+echo "Creating init-mongo.js file"
+touch init-mongo.js
+echo "Created init-mongo.js file. Please place your initial mongo configurations here."
 
 
 
