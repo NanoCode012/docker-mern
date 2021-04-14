@@ -32,7 +32,7 @@ source local-scripts.sh
 echo "Downloaded base scripts"
 echo ""
 
-if [[ -z "$1" && "$1" == "default" ]]; then
+if [[ ! -z "$1" && "$1" == "default" ]]; then
     echo "Setting default run"
     default=true
 else 
