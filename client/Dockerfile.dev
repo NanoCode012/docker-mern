@@ -1,0 +1,7 @@
+FROM node:$DOCKER_NODE_VERSION as build 
+WORKDIR /app
+COPY package*.json ./
+RUN npm install 
+
+# Default command
+CMD ["npm", "start"]

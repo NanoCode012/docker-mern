@@ -87,8 +87,10 @@ fi
 cd docker-mern
 
 # Download env file
+echo "Downloading env file"
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env" -qO .env
 source .env
+echo "Downloaded env file"
 
 # Server configuration
 # read_with_prompt USE_EXTERNAL_REVERSE_PROXY "Do you use an external reverse proxy like nginx-proxy-automation? (y/n) " "y"
@@ -111,6 +113,9 @@ echo ""
 # wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.override.yml"
 
 # Create client app
+echo "Client"
+echo "======"
+
 mkdir client
 
 read_yes_no check_create_new_react_app "Create new react app"
@@ -123,10 +128,15 @@ fi
 
 cd client
 
+echo "Downloading Dockerfile, Dockerfile.dev, .gitignore, and .dockerignore"
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/Dockerfile" -qO Dockerfile
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/Dockerfile.dev" -qO Dockerfile.dev
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/.gitignore" -qO .gitignore
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/.dockerignore" -qO .dockerignore
+echo "Downloaded files"
 
-sudo docker build -t basic-react .
-sudo docker run --name basic-react --rm basic-react
+cd ..
+
 
 
 
