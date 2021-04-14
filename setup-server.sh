@@ -15,7 +15,7 @@
 #                                                                       +
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-echo "Docker-Mern server startup script by NanoCode012"
+echo "Docker-Mern server startup script by Chanvichet Vong"
 echo "Get latest at https://github.com/NanoCode012/docker-mern/"
 echo ""
 
