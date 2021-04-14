@@ -50,6 +50,22 @@ function read_with_prompt {
   done
 }
 
+function read_yes_no {
+  variable_name="$1"
+  prompt="$2"
+  unset $variable_name
+
+  read -p "$prompt -- (y/n)?" answer
+  case ${answer:0:1} in
+      y|Y )
+          variable_name=true
+      ;;
+      * )
+          variable_name=false
+      ;;
+  esac
+}
+
 if [ ! -d "docker-mern" ]; then
     mkdir docker-mern
 else
@@ -96,12 +112,21 @@ echo ""
 
 # Create client app
 mkdir client
-sudo docker run --rm -v $(pwd)/client:/client node:$DOCKER_NODE_VERSION npx create-react-app client --use-npm
-sudo chown -R ${USER}:${USER} client
+
+read_yes_no check_create_new_react_app "Create new react app"
+
+if [ "$check_create_new_react_app" = true ]; then
+    echo "Creating new react project"
+    sudo docker run --rm -v $(pwd)/client:/client node:$DOCKER_NODE_VERSION npx create-react-app client --use-npm
+    sudo chown -R ${USER}:${USER} client
+fi
+
 cd client
 
-
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/Dockerfile" -Oq Dockerfile
+
+docker build -t basic-react .
+docker run --name basic-react --rm basic-react
 
 
 
