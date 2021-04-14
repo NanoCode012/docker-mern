@@ -78,13 +78,13 @@ read_with_prompt NGINX_NAME "Nginx container name" "mern-nginx"
 read_with_prompt CLIENT_NAME "Client container name" "mern-client"
 read_with_prompt BACKEND_NAME "Backend container name" "mern-backend"
 read_with_prompt DB_NAME "Database container name" "mern-db"
-read_with_prompt PROXY_NAME "Docker proxy name" "proxy"
+read_with_prompt PROXY_NAME "Docker external proxy name" "proxy"
 
 echo "NGINX_NAME=$NGINX_NAME"           >> .env
 echo "CLIENT_NAME=$CLIENT_NAME"         >> .env
 echo "BACKEND_NAME=$BACKEND_NAME"       >> .env
 echo "DB_NAME=$DB_NAME"                 >> .env
-echo "PROXY_NAME=$PROXY_NAME"           >> .env
+echo "PROXY_NAME=$PROXY_NAME"           >> .env # assume that network exists for now
 echo ""
 
 # Get docker-compose files
@@ -93,5 +93,10 @@ echo ""
 # wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.override.yml"
 
 # Create client app
+npx create-react-app client
+cd client
+
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/Dockerfile"
+
 
 
