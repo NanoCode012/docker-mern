@@ -1,4 +1,5 @@
-# Specify a base image
+ARG DOCKER_NODE_VERSION
+
 FROM node:$DOCKER_NODE_VERSION AS alpine
 
 WORKDIR /app
