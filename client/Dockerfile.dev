@@ -1,3 +1,5 @@
+ARG DOCKER_NODE_VERSION
+
 FROM node:$DOCKER_NODE_VERSION as build 
 WORKDIR /app
 COPY package*.json ./
