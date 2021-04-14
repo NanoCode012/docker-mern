@@ -221,11 +221,11 @@ else
 fi
 
 echo "Replacing env file with env variables"
-MONGO_INITDB_DATABASE=$MONGO_INITDB_DATABASE && envsubst < backend.env > backend.env.replaced
+MONGO_INITDB_DATABASE=$MONGO_INITDB_DATABASE envsubst < backend.env > backend.env.replaced
 mv backend.env.replaced backend.env
 
-MONGO_INITDB_DATABASE=$MONGO_INITDB_DATABASE && MONGO_INITDB_USERNAME=$MONGO_INITDB_USERNAME && \
-                    MONGO_INITDB_PASSWORD=$MONGO_INITDB_PASSWORD && envsubst < mongo.env > mongo.env.replaced
+MONGO_INITDB_DATABASE=$MONGO_INITDB_DATABASE MONGO_INITDB_USERNAME=$MONGO_INITDB_USERNAME \
+                    MONGO_INITDB_PASSWORD=$MONGO_INITDB_PASSWORD envsubst < mongo.env > mongo.env.replaced
 mv mongo.env.replaced mongo.env
 echo "Replaced variables"
 echo ""
