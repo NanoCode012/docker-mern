@@ -95,6 +95,7 @@ echo ""
 # wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.override.yml"
 
 # Create client app
+mkdir client
 sudo docker run --rm -v $(pwd)/client:/client node:$DOCKER_NODE_VERSION pwd
 cd client
 
