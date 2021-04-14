@@ -87,7 +87,7 @@ fi
 cd docker-mern
 
 # Download env file
-wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env" -Oq .env
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env" -qO .env
 source .env
 
 # Server configuration
@@ -123,7 +123,7 @@ fi
 
 cd client
 
-wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/Dockerfile" -Oq Dockerfile
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/Dockerfile" -qO Dockerfile
 
 docker build -t basic-react .
 docker run --name basic-react --rm basic-react
