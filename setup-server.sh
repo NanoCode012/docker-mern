@@ -32,11 +32,11 @@ source local-scripts.sh
 echo "Downloaded base scripts"
 echo ""
 
-if [[ ! -z "$1" && "$1" == "default" ]]; then
-    echo "Setting default run"
-    default=true
+if [[ ! -z "$1" && "$1" == "barebone_run" ]]; then
+    echo -e "Setting barebone run \n"
+    barebone_run=true
 else 
-    default=false
+    barebone_run=false
 fi
 
 echo "Folder setup"
@@ -71,7 +71,7 @@ wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env.sam
 source .env
 echo "Downloaded env file"
 
-if [ "$default" = true ]; then
+if [ "$barebone_run" = true ]; then
     NGINX_NAME="mern-nginx"
     CLIENT_NAME="mern-client"
     BACKEND_NAME="mern-backend"
@@ -104,7 +104,7 @@ echo "======"
 
 mkdir client
 
-if [ "$default" = false ]; then
+if [ "$barebone_run" = false ]; then
     read_yes_no check_create_new_react_app "Create new react app"
 
     if [ "$check_create_new_react_app" = true ]; then
@@ -133,7 +133,7 @@ echo "======="
 
 mkdir backend
 
-if [ "$default" = false ]; then
+if [ "$barebone_run" = false ]; then
     read_yes_no check_create_new_backend_app "Create new node app"
 
     if [ "$check_create_new_backend_app" = true ]; then
