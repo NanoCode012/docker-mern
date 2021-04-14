@@ -24,9 +24,6 @@ BRANCH="initial" # for dev only
 SCRIPT_PATH="$(dirname "$(readlink -f "$0")")"
 SCRIPT_NAME="${0##*/}"
 
-wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env" -O .env
-source .env
-
 # Function to read input from user with a prompt
 # Credits: https://github.com/TheRemote/MinecraftBedrockServer/blob/1f27b8ab82f920bb967d1c27ee2fd120a484c99c/SetupMinecraft.sh
 function read_with_prompt {
@@ -73,8 +70,9 @@ fi
 # cd into folder
 cd docker-mern
 
-# Create env file
-touch .env
+# Download env file
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env" -O .env
+source .env
 
 # Server configuration
 # read_with_prompt USE_EXTERNAL_REVERSE_PROXY "Do you use an external reverse proxy like nginx-proxy-automation? (y/n) " "y"
