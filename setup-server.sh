@@ -32,6 +32,13 @@ source local-scripts.sh
 echo "Downloaded base scripts"
 echo ""
 
+if [ -z "$1" && "$1" = "default" ]; then
+    echo "Setting default run"
+    default=true
+else 
+    default=false
+fi
+
 echo "Folder setup"
 echo "============"
 
@@ -64,12 +71,20 @@ wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env" -q
 source .env
 echo "Downloaded env file"
 
-# read_with_prompt USE_EXTERNAL_REVERSE_PROXY "Do you use an external reverse proxy like nginx-proxy-automation? (y/n) " "y"
-read_with_prompt NGINX_NAME "Nginx container name" "mern-nginx"
-read_with_prompt CLIENT_NAME "Client container name" "mern-client"
-read_with_prompt BACKEND_NAME "Backend container name" "mern-backend"
-read_with_prompt DB_NAME "Database container name" "mern-db"
-read_with_prompt PROXY_NAME "Docker external proxy name" "proxy"
+if [ "$default" = true ]; then
+    NGINX_NAME="mern-nginx"
+    CLIENT_NAME="mern-client"
+    BACKEND_NAME="mern-backend"
+    DB_NAME="mern-db"
+    PROXY_NAME="proxy"
+else 
+    # read_with_prompt USE_EXTERNAL_REVERSE_PROXY "Do you use an external reverse proxy like nginx-proxy-automation? (y/n) " "y"
+    read_with_prompt NGINX_NAME "Nginx container name" "mern-nginx"
+    read_with_prompt CLIENT_NAME "Client container name" "mern-client"
+    read_with_prompt BACKEND_NAME "Backend container name" "mern-backend"
+    read_with_prompt DB_NAME "Database container name" "mern-db"
+    read_with_prompt PROXY_NAME "Docker external proxy name" "proxy"
+fi
 
 echo "NGINX_NAME=$NGINX_NAME"           >> .env
 echo "CLIENT_NAME=$CLIENT_NAME"         >> .env
@@ -89,13 +104,15 @@ echo "======"
 
 mkdir client
 
-read_yes_no check_create_new_react_app "Create new react app"
+if [ "$default" = false ]; then
+    read_yes_no check_create_new_react_app "Create new react app"
 
-if [ "$check_create_new_react_app" = true ]; then
-    echo "Creating new react app"
-    sudo docker run --rm -v $(pwd)/client:/client node:$DOCKER_NODE_VERSION npx create-react-app client --use-npm
-    sudo chown -R ${USER}:${USER} client
-    echo "Created new react app"
+    if [ "$check_create_new_react_app" = true ]; then
+        echo "Creating new react app"
+        sudo docker run --rm -v $(pwd)/client:/client node:$DOCKER_NODE_VERSION npx create-react-app client --use-npm
+        sudo chown -R ${USER}:${USER} client
+        echo "Created new react app"
+    fi
 fi
 
 cd client
@@ -116,14 +133,16 @@ echo "======="
 
 mkdir backend
 
-read_yes_no check_create_new_backend_app "Create new node app"
+if [ "$default" = false ]; then
+    read_yes_no check_create_new_backend_app "Create new node app"
 
-if [ "$check_create_new_backend_app" = true ]; then
-    echo "Creating new node app"
-    sudo docker run --rm -v $(pwd)/backend:/backend node:$DOCKER_NODE_VERSION \
-        /bin/sh -c "cd backend && npm init -y && npm install --save-dev --silent nodemon && npm set-script start \"node src/index.js\" && npm set-script test \"nodemon src/index.js\""
-    sudo chown -R ${USER}:${USER} backend
-    echo "Created new node app"
+    if [ "$check_create_new_backend_app" = true ]; then
+        echo "Creating new node app"
+        sudo docker run --rm -v $(pwd)/backend:/backend node:$DOCKER_NODE_VERSION \
+            /bin/sh -c "cd backend && npm init -y && npm install --save-dev --silent nodemon && npm set-script start \"node src/index.js\" && npm set-script test \"nodemon src/index.js\""
+        sudo chown -R ${USER}:${USER} backend
+        echo "Created new node app"
+    fi
 fi
 
 cd backend
