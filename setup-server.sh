@@ -83,7 +83,10 @@ else
     echo ""
 fi
 
-# cd into folder
+# Server configuration
+echo "Configuration"
+echo "============="
+
 cd docker-mern
 
 # Download env file
@@ -92,7 +95,6 @@ wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env" -q
 source .env
 echo "Downloaded env file"
 
-# Server configuration
 # read_with_prompt USE_EXTERNAL_REVERSE_PROXY "Do you use an external reverse proxy like nginx-proxy-automation? (y/n) " "y"
 read_with_prompt NGINX_NAME "Nginx container name" "mern-nginx"
 read_with_prompt CLIENT_NAME "Client container name" "mern-client"
