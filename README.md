@@ -4,9 +4,8 @@ This repo aims to create a one-stop script which would allow the setup of a MERN
 
 # Requirements
 
-- docker
+- docker (with external network created)
 - docker-compose
-- npm
 - wget
 
 # Usage

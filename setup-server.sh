@@ -71,7 +71,7 @@ fi
 cd docker-mern
 
 # Download env file
-wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env" -O .env
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env" -Oq .env
 source .env
 
 # Server configuration
@@ -96,12 +96,12 @@ echo ""
 
 # Create client app
 mkdir client
-sudo docker run --rm -v $(pwd)/client:/client node:$DOCKER_NODE_VERSION npx create-react-app client
+sudo docker run --rm -v $(pwd)/client:/client node:$DOCKER_NODE_VERSION npx create-react-app client --use-npm
 sudo chown -R ${USER}:${USER} client
 cd client
 
 
-wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/Dockerfile"
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/Dockerfile" -Oq Dockerfile
 
 
 
