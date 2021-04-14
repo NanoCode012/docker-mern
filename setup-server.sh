@@ -120,7 +120,8 @@ read_yes_no check_create_new_backend_app "Create new node app"
 
 if [ "$check_create_new_backend_app" = true ]; then
     echo "Creating new node app"
-    sudo docker run --rm -v $(pwd)/backend:/backend node:$DOCKER_NODE_VERSION /bin/sh -c "cd backend && npm init -y"
+    cmd = "cd backend && npm init -y && npm install --save-dev nodemon && npm set-script start \"node src/index.js\" && npm set-script test \"nodemon src/index.js\""
+    sudo docker run --rm -v $(pwd)/backend:/backend node:$DOCKER_NODE_VERSION /bin/sh -c $cmd
     sudo chown -R ${USER}:${USER} backend
     echo "Created new node app"
 fi
