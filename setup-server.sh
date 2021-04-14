@@ -96,8 +96,10 @@ echo ""
 
 # Create client app
 mkdir client
-sudo docker run --rm -v $(pwd)/client:/client node:$DOCKER_NODE_VERSION pwd
+sudo docker run --rm -v $(pwd)/client:/client node:$DOCKER_NODE_VERSION npx create-react-app client
+sudo chown -R ${USER}:${USER} client
 cd client
+
 
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/Dockerfile"
 
