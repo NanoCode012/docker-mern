@@ -78,9 +78,9 @@ wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.dockeri
 echo "Downloaded .*ignore files"
 
 # Get docker-compose files
-# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.yml" -qO docker-compose.yml
-# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.prod.yml" -qO docker-compose.prod.yml
-# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.override.yml" -qO docker-compose.override.yml
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.yml" -qO docker-compose.yml
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.prod.yml" -qO docker-compose.prod.yml
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.override.yml" -qO docker-compose.override.yml
 
 if [ "$barebone_run" = true ]; then
     NGINX_NAME="mern-nginx"

@@ -1,0 +1,40 @@
+version: "3.3"
+services:
+  nginx:
+    container_name: ${NGINX_NAME}
+    depends_on:
+      - client
+      - backend
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+  client:
+    container_name: ${CLIENT_NAME}
+    volumes:
+      - /app/node_modules # Inside the container, don't try to override this folder, just leave as is
+    restart: on-failure
+    args:
+      DOCKER_NODE_VERSION: ${DOCKER_NODE_VERSION}
+  backend:
+    container_name: ${BACKEND_NAME}
+    restart: on-failure
+    volumes:
+      - /app/node_modules # Inside the container, don't try to override this folder, just leave as is
+    env_file:
+      - ./env/backend.env
+    args:
+      DOCKER_NODE_VERSION: ${DOCKER_NODE_VERSION}
+  mongo:
+    image: mongo
+    container_name: ${DB_NAME}
+    volumes:
+      - ./db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./db/mongo-volume:/data/db
+    env_file:
+      - ./env/mongo.env
+
+networks:
+  default:
+    external:
+      name: ${PROXY_NAME}
