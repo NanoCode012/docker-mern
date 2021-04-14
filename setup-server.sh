@@ -156,12 +156,12 @@ fi
 
 cd backend
 
-# echo "Downloading Dockerfile, Dockerfile.dev, .gitignore, and .dockerignore"
-# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/Dockerfile" -qO Dockerfile
-# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/Dockerfile.dev" -qO Dockerfile.dev
-# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/.gitignore" -qO .gitignore
-# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/.dockerignore" -qO .dockerignore
-# echo "Downloaded files"
+echo "Downloading Dockerfile, Dockerfile.dev, .gitignore, and .dockerignore"
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/Dockerfile" -qO Dockerfile
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/Dockerfile.dev" -qO Dockerfile.dev
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/.gitignore" -qO .gitignore
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/.dockerignore" -qO .dockerignore
+echo "Downloaded files"
 echo ""
 
 
