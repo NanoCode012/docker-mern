@@ -70,11 +70,6 @@ fi
 
 cd docker-mern
 
-# Get docker-compose files
-# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.yml"
-# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.prod.yml"
-# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.override.yml"
-
 # Create env file
 touch .env
 
@@ -92,6 +87,11 @@ echo "BACKEND_NAME=$BACKEND_NAME"       >> .env
 echo "DB_NAME=$DB_NAME"                 >> .env
 echo "PROXY_NAME=$PROXY_NAME"           >> .env
 echo ""
+
+# Get docker-compose files
+# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.yml"
+# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.prod.yml"
+# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.override.yml"
 
 # Create client app
 
