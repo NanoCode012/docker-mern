@@ -17,6 +17,7 @@
 
 echo "Docker-Mern server startup script by Chanvichet Vong"
 echo "Get latest at https://github.com/NanoCode012/docker-mern/"
+echo "========================================================="
 echo ""
 
 BRANCH="initial" # for dev only
@@ -66,6 +67,9 @@ function read_yes_no {
   esac
 }
 
+echo "Folder setup"
+echo "============"
+
 if [ ! -d "docker-mern" ]; then
     mkdir docker-mern
 else
@@ -80,8 +84,8 @@ else
 
     mkdir docker-mern
     echo "Successfully moved to docker-mern-backup folder"
-    echo ""
 fi
+echo ""
 
 # Server configuration
 echo "Configuration"
