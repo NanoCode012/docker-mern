@@ -53,7 +53,7 @@ function read_with_prompt {
 if [ ! -d "docker-mern" ]; then
     mkdir docker-mern
 else
-    echo "Moving old docker-mern folder to docker-mern.backup folder"
+    echo "Moving old docker-mern folder to docker-mern-backup folder"
 
     if [ ! -d "docker-mern-backup" ]; then
         echo "Deleting backup folder"
@@ -63,7 +63,7 @@ else
     mv docker-mern docker-mern-backup
 
     mkdir docker-mern
-    echo "Successfully moved to docker-mern.backup folder"
+    echo "Successfully moved to docker-mern-backup folder"
     echo ""
 fi
 
