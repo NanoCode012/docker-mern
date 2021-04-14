@@ -61,7 +61,6 @@ else
         echo "Deleted backup folder"
     fi
     mv docker-mern docker-mern.backup
-    rm -r docker-mern
 
     mkdir docker-mern
     echo "Successfully moved to docker-mern.backup folder"
