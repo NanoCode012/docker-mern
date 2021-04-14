@@ -24,6 +24,9 @@ BRANCH="initial" # for dev only
 SCRIPT_PATH="$(dirname "$(readlink -f "$0")")"
 SCRIPT_NAME="${0##*/}"
 
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env"
+source .env
+
 # Function to read input from user with a prompt
 # Credits: https://github.com/TheRemote/MinecraftBedrockServer/blob/1f27b8ab82f920bb967d1c27ee2fd120a484c99c/SetupMinecraft.sh
 function read_with_prompt {
@@ -55,7 +58,7 @@ if [ ! -d "docker-mern" ]; then
 else
     echo "Moving old docker-mern folder to docker-mern-backup folder"
 
-    if [ ! -d "docker-mern-backup" ]; then
+    if [ -d "docker-mern-backup" ]; then
         echo "Deleting backup folder"
         rm -rf docker-mern-backup
         echo "Deleted backup folder"
@@ -67,6 +70,7 @@ else
     echo ""
 fi
 
+# cd into folder
 cd docker-mern
 
 # Create env file
@@ -93,7 +97,7 @@ echo ""
 # wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.override.yml"
 
 # Create client app
-npx create-react-app client
+sudo docker run --rm -v $(pwd)/client:/client node:$DOCKER_NODE_VERSION pwd
 cd client
 
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/Dockerfile"
