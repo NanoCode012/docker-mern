@@ -191,7 +191,8 @@ wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/nginx/co
 echo "Downloaded files"
 
 echo "Replacing conf variables with env variables"
-envsubst < configs/default.conf > configs/default.conf
+envsubst < configs/default.conf > configs/default.conf.replaced
+mv configs/default.conf.replaced configs/default.conf
 echo "Replaced variables"
 
 cd ..
