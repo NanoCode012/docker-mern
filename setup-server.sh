@@ -121,9 +121,10 @@ mkdir client
 read_yes_no check_create_new_react_app "Create new react app"
 
 if [ "$check_create_new_react_app" = true ]; then
-    echo "Creating new react project"
+    echo "Creating new react app"
     sudo docker run --rm -v $(pwd)/client:/client node:$DOCKER_NODE_VERSION npx create-react-app client --use-npm
     sudo chown -R ${USER}:${USER} client
+    echo "Created new react app"
 fi
 
 cd client
@@ -134,8 +135,34 @@ wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/D
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/.gitignore" -qO .gitignore
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/.dockerignore" -qO .dockerignore
 echo "Downloaded files"
+echo ""
 
 cd ..
+
+# Create backend app
+echo "Backend"
+echo "======="
+
+mkdir backend
+
+read_yes_no check_create_new_backend_app "Create new node app"
+
+if [ "$check_create_new_backend_app" = true ]; then
+    echo "Creating new node app"
+    sudo docker run --rm -v $(pwd)/backend:/backend node:$DOCKER_NODE_VERSION npm init -y
+    sudo chown -R ${USER}:${USER} backend
+    echo "Created new node app"
+fi
+
+cd backend
+
+# echo "Downloading Dockerfile, Dockerfile.dev, .gitignore, and .dockerignore"
+# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/Dockerfile" -qO Dockerfile
+# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/Dockerfile.dev" -qO Dockerfile.dev
+# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/.gitignore" -qO .gitignore
+# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/.dockerignore" -qO .dockerignore
+# echo "Downloaded files"
+echo ""
 
 
 
