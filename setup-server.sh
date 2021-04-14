@@ -24,7 +24,7 @@ BRANCH="initial" # for dev only
 SCRIPT_PATH="$(dirname "$(readlink -f "$0")")"
 SCRIPT_NAME="${0##*/}"
 
-wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env"
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env" -O .env
 source .env
 
 # Function to read input from user with a prompt
