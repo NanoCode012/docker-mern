@@ -32,7 +32,7 @@ source local-scripts.sh
 echo "Downloaded base scripts"
 echo ""
 
-if [[ ! -z "$1" && "$1" == "barebone_run" ]]; then
+if [[ ! -z "$1" && "$1" == "barebone" ]]; then
     echo -e "Setting barebone run \n"
     barebone_run=true
 else 
