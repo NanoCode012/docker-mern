@@ -194,5 +194,40 @@ echo "Replacing conf variables with env variables"
 envsubst < configs/default.conf > configs/default.conf.replaced
 mv configs/default.conf.replaced configs/default.conf
 echo "Replaced variables"
+echo ""
 
 cd ..
+
+# Create environment folder
+echo "Env"
+echo "==="
+
+mkdir env
+cd env
+
+echo "Downloading env files"
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/env/backend.env.sample" -qO backend.env
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/env/mongo.env.sample" -qO mongo.env
+echo "Downloaded env files"
+
+if [ "$barebone_run" = true ]; then
+    MONGO_INITDB_DATABASE="app"
+    MONGO_INITDB_USERNAME="nanocode012"
+    MONGO_INITDB_PASSWORD="averysecurepassword,butpleasechangeme0-0"
+else 
+    read_with_prompt MONGO_INITDB_DATABASE "MongoDB Database Name" "app"
+    read_with_prompt MONGO_INITDB_USERNAME "MongoDB Username" "nanocode012"
+    read_with_prompt MONGO_INITDB_PASSWORD "MongoDB Username" "averysecurepassword,butpleasechangeme0-0"
+fi
+
+echo "Replacing env file with env variables"
+envsubst < backend.env > backend.env.replaced
+mv backend.env.replaced backend.env
+
+envsubst < mongo.env > mongo.env.replaced
+mv mongo.env.replaced mongo.env
+echo "Replaced variables"
+echo ""
+
+cd ..
+
