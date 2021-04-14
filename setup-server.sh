@@ -58,10 +58,10 @@ function read_yes_no {
   read -p "$prompt -- (y/n)?" answer
   case ${answer:0:1} in
       y|Y )
-          variable_name=true
+          declare -g $variable_name=true
       ;;
       * )
-          variable_name=false
+          declare -g $variable_name=false
       ;;
   esac
 }
@@ -125,8 +125,8 @@ cd client
 
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/Dockerfile" -qO Dockerfile
 
-docker build -t basic-react .
-docker run --name basic-react --rm basic-react
+sudo docker build -t basic-react .
+sudo docker run --name basic-react --rm basic-react
 
 
 
