@@ -67,7 +67,7 @@ cd docker-mern
 
 # Download env file
 echo "Downloading env file"
-wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env" -qO .env
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env.sample" -qO .env
 source .env
 echo "Downloaded env file"
 
