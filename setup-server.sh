@@ -19,7 +19,7 @@ echo "Docker-Mern server startup script by Chanvichet Vong"
 echo "Get latest at https://github.com/NanoCode012/docker-mern/"
 echo ""
 
-BRANCH="inital" # for dev only
+BRANCH="initial" # for dev only
 
 SCRIPT_PATH="$(dirname "$(readlink -f "$0")")"
 SCRIPT_NAME="${0##*/}"
