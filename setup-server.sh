@@ -71,11 +71,17 @@ wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env.sam
 source .env
 echo "Downloaded env file"
 
+# Download ignore files
 echo "Downloading .*ignore files"
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.gitignore" -qO .gitignore
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.dockerignore" -qO .dockerignore
 echo "Downloaded .*ignore files"
 echo ""
+
+# Get docker-compose files
+# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.yml" -qO docker-compose.yml
+# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.prod.yml" -qO docker-compose.prod.yml
+# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.override.yml" -qO docker-compose.override.yml
 
 if [ "$barebone_run" = true ]; then
     NGINX_NAME="mern-nginx"
@@ -98,11 +104,6 @@ echo "BACKEND_NAME=$BACKEND_NAME"       >> .env
 echo "DB_NAME=$DB_NAME"                 >> .env
 echo "PROXY_NAME=$PROXY_NAME"           >> .env # assume that network exists for now
 echo ""
-
-# Get docker-compose files
-# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.yml"
-# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.prod.yml"
-# wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.override.yml"
 
 # Create client app
 echo "Client"
@@ -173,6 +174,21 @@ cd db
 echo "Creating init-mongo.js file"
 touch init-mongo.js
 echo "Created init-mongo.js file. Please place your initial mongo configurations here."
+echo ""
 
+cd ..
 
+# Create proxy
+echo "Nginx Proxy"
+echo "==========="
 
+mkdir nginx
+mkdir nginx/configs
+cd nginx
+
+echo "Downloading Dockerfile and nginx default conf"
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/nginx/Dockerfile" -qO Dockerfile
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/nginx/configs/default.conf" -qO configs/default.conf
+echo "Downloaded files"
+
+cd ..
