@@ -71,6 +71,12 @@ wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.env.sam
 source .env
 echo "Downloaded env file"
 
+echo "Downloading .*ignore files"
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.gitignore" -qO .gitignore
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/.dockerignore" -qO .dockerignore
+echo "Downloaded .*ignore files"
+echo ""
+
 if [ "$barebone_run" = true ]; then
     NGINX_NAME="mern-nginx"
     CLIENT_NAME="mern-client"
