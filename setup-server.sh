@@ -80,6 +80,7 @@ echo "Downloaded .*ignore files"
 # Get docker-compose files
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.yml" -qO docker-compose.yml
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.prod.yml" -qO docker-compose.prod.yml
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.ssl.yml" -qO docker-compose.ssl.yml
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/docker-compose.override.yml" -qO docker-compose.override.yml
 
 if [ "$barebone_run" = true ]; then
@@ -208,6 +209,7 @@ cd env
 echo "Downloading env files"
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/env/backend.env.sample" -qO backend.env
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/env/mongo.env.sample" -qO mongo.env
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/env/nginx.env.sample" -qO nginx.env
 echo "Downloaded env files"
 
 if [ "$barebone_run" = true ]; then
