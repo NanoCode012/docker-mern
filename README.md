@@ -38,6 +38,10 @@ $ docker-compose up -d --build
 
 - For more docker-configuration, consider creating a new compose file with the changes and adding it via `-f` option
 
+# Script Development/Test
+
+Pass in environment variable `BRANCH=the_branch_name` before calling script, so that the script knows where to `wget` the files.
+
 # Contribution
 
 PRs are **greatly** appreciated, but please open an Issue first to discuss.
