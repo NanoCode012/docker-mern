@@ -15,3 +15,5 @@ wget https://raw.githubusercontent.com/NanoCode012/docker-mern/main/setup-server
 chmod +x setup-server.sh
 ./setup-server.sh
 ```
+
+Note: Ignore `Git repo not initialized Error: Command failed: git --version` when creating base react files
