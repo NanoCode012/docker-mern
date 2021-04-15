@@ -2,7 +2,7 @@
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #                                                                       +
-# Server Setup Script - set up docker mern on a new server              +
+# Server Setup Script - set up Docker MERN on a new server              +
 #                                                                       +
 # https://github.com/NanoCode012/docker-mern                            +
 #                                                                       +
@@ -65,6 +65,11 @@ echo "Configuration"
 echo "============="
 
 cd docker-mern
+
+# Download LICENSE
+echo "Downloading LICENSE"
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/LICENSE" -qO LICENSE
+echo "Downloaded LICENSE"
 
 # Download env file
 echo "Downloading env file"
