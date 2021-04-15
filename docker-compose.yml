@@ -13,7 +13,7 @@ services:
     container_name: ${CLIENT_NAME}
     build:
       args:
-        - DOCKER_NODE_VERSION: ${DOCKER_NODE_VERSION}
+        DOCKER_NODE_VERSION: ${DOCKER_NODE_VERSION}
     volumes:
       - /app/node_modules # Inside the container, don't try to override this folder, just leave as is
     restart: on-failure
@@ -22,7 +22,7 @@ services:
     container_name: ${BACKEND_NAME}
     build:
       args:
-        - DOCKER_NODE_VERSION: ${DOCKER_NODE_VERSION}
+        DOCKER_NODE_VERSION: ${DOCKER_NODE_VERSION}
     volumes:
       - /app/node_modules # Inside the container, don't try to override this folder, just leave as is
     env_file:
