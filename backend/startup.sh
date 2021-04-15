@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# To be run inside docker container
+
 cd backend
 
 npm init -y
