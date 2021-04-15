@@ -26,6 +26,7 @@ if [ -z ${BRANCH+x} ]; then
     BRANCH="main" # default
 else
     echo "Running on custom branch $BRANCH"
+    echo ""
 fi
 
 SCRIPT_PATH="$(dirname "$(readlink -f "$0")")"
@@ -52,9 +53,9 @@ if [ ! -d "docker-mern" ]; then
 else
     echo "Moving old docker-mern folder to docker-mern-backup folder"
 
+    sudo chown -R ${USER}:${USER} docker-mern # fix permission with db belonging to root
     if [ -d "docker-mern-backup" ]; then
         echo "Deleting backup folder"
-        sudo chown -R ${USER}:${USER} docker-mern-backup # fix permission with db belonging to root
         rm -rf docker-mern-backup
         echo "Deleted backup folder"
     fi
