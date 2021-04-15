@@ -275,5 +275,5 @@ echo "Clean up"
 echo "==="
 
 echo "Deleting local-scripts"
-local-scripts.sh
+rm local-scripts.sh
 echo "Deleted local scripts"
