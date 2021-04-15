@@ -49,6 +49,7 @@ else
 
     if [ -d "docker-mern-backup" ]; then
         echo "Deleting backup folder"
+        sudo chown -R ${USER}:${USER} docker-mern-backup # fix permission with db belonging to root
         rm -rf docker-mern-backup
         echo "Deleted backup folder"
     fi
