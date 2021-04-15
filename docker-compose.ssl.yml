@@ -1,0 +1,5 @@
+version: '3.3'
+services:
+    nginx:
+        env_file:
+            - ./env/nginx.env
