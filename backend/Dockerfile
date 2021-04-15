@@ -5,7 +5,7 @@ FROM node:$DOCKER_NODE_VERSION AS alpine
 WORKDIR /app
 
 # Install dependencies
-COPY package*.json .
+COPY package*.json ./
 RUN npm install 
 COPY . .
 
