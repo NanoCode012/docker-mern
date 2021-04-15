@@ -146,8 +146,23 @@ if [ "$barebone_run" = false ]; then
 
     if [ "$check_create_new_backend_app" = true ]; then
         echo "Creating new node app"
-        sudo docker run --rm -v $(pwd)/backend:/backend node:$DOCKER_NODE_VERSION \
-            /bin/sh -c "cd backend && npm init -y && npm install --save-dev --silent nodemon && npm set-script start \"node src/index.js\" && npm set-script test \"nodemon src/index.js\""
+
+        echo "Downloading startup script"
+        wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/startup.sh" -qO backend-startup.sh
+        echo "Downloaded startup script"
+
+        sudo docker run --rm -v $(pwd)/backend:/backend -v $(pwd)/backend-startup.sh:/backend-startup.sh \
+            node:$DOCKER_NODE_VERSION /bin/sh -c "chmod +x backend-startup.sh && ./backend-startup.sh"
+        
+        echo "Deleting startup script"
+        rm backend-startup.sh
+        echo "Deleted startup script"
+
+        echo "Downloading starter express code"
+        mkdir src
+        wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/src/index.js" -qO src/index.js
+        echo "Downloaded starter express code"
+
         sudo chown -R ${USER}:${USER} backend
         echo "Created new node app"
     fi
@@ -251,3 +266,11 @@ fi
 echo ""
 
 cd ..
+
+# Cleanup
+echo "Clean up"
+echo "==="
+
+echo "Deleting local-scripts"
+local-scripts.sh
+echo "Deleted local scripts"
