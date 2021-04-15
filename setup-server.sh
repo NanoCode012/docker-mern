@@ -91,6 +91,7 @@ if [ "$barebone_run" = true ]; then
     PROXY_NAME="proxy"
 else 
     # read_with_prompt USE_EXTERNAL_REVERSE_PROXY "Do you use an external reverse proxy like nginx-proxy-automation? (y/n) " "y"
+    # todo: container names regex [a-zA-Z0-9][a-zA-Z0-9_.-]
     read_with_prompt NGINX_NAME "Nginx container name" "mern-nginx"
     read_with_prompt CLIENT_NAME "Client container name" "mern-client"
     read_with_prompt BACKEND_NAME "Backend container name" "mern-backend"
