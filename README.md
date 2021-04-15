@@ -18,6 +18,10 @@ $ ./setup-server.sh
 
 Note: Ignore `Git repo not initialized Error: Command failed: git --version` when creating base react files
 
+### Optional arguments:
+
+- `barebone` run with default options and without creating react and node files
+
 # Usage
 
 ## Production
