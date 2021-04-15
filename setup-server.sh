@@ -231,7 +231,23 @@ MONGO_INITDB_DATABASE=$MONGO_INITDB_DATABASE MONGO_INITDB_USERNAME=$MONGO_INITDB
                     MONGO_INITDB_PASSWORD=$MONGO_INITDB_PASSWORD envsubst < mongo.env > mongo.env.replaced
 mv mongo.env.replaced mongo.env
 echo "Replaced variables"
+
+if [ "$barebone_run" = false ]; then
+    read_yes_no check_enable_ssl_app "Enable SSL via Nginx Proxy-LetsEncrypt"
+
+    if [ "$check_enable_ssl_app" = true ]; then
+        read_with_prompt VIRTUAL_HOST "VIRTUAL_HOST/LETSENCRYPT_HOST" ""
+        read_with_prompt VIRTUAL_PORT "VIRTUAL_PORT" "80"
+        read_with_prompt LETSENCRYPT_EMAIL "LETSENCRYPT_EMAIL" ""
+
+        echo "Replacing env file with env variables"
+        VIRTUAL_HOST=$VIRTUAL_HOST VIRTUAL_PORT=$VIRTUAL_PORT LETSENCRYPT_HOST=$VIRTUAL_HOST \
+                                LETSENCRYPT_EMAIL=$LETSENCRYPT_EMAIL envsubst < nginx.env > nginx.env.replaced
+        mv nginx.env.replaced nginx.env
+        echo "Replaced variables"
+    fi
+fi
+
 echo ""
 
 cd ..
-
