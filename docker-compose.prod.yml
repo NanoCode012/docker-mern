@@ -1,0 +1,11 @@
+version: "3.3"
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile

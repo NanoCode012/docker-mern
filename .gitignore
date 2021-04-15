@@ -1,0 +1,4 @@
+.env
+
+# Ignore all database volume files
+db/mongo-volume
