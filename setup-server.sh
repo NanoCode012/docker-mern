@@ -163,8 +163,8 @@ if [ "$barebone_run" = false ]; then
         echo "Deleted startup script"
 
         echo "Downloading starter express code"
-        mkdir src
-        wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/src/index.js" -qO src/index.js
+        mkdir backend/src
+        wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/backend/src/index.js" -qO backend/src/index.js
         echo "Downloaded starter express code"
 
         sudo chown -R ${USER}:${USER} backend
