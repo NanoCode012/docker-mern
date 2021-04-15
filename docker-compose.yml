@@ -15,7 +15,7 @@ services:
       - /app/node_modules # Inside the container, don't try to override this folder, just leave as is
     restart: on-failure
     args:
-      DOCKER_NODE_VERSION: ${DOCKER_NODE_VERSION}
+      - DOCKER_NODE_VERSION: ${DOCKER_NODE_VERSION}
   backend:
     container_name: ${BACKEND_NAME}
     restart: on-failure
@@ -24,7 +24,7 @@ services:
     env_file:
       - ./env/backend.env
     args:
-      DOCKER_NODE_VERSION: ${DOCKER_NODE_VERSION}
+      - DOCKER_NODE_VERSION: ${DOCKER_NODE_VERSION}
   mongo:
     image: mongo
     container_name: ${DB_NAME}
