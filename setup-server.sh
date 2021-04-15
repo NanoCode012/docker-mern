@@ -21,7 +21,12 @@ echo "Get latest at https://github.com/NanoCode012/docker-mern/"
 echo "========================================================="
 echo ""
 
-BRANCH="initial" # for dev only
+# When development, pass env BRANCH=branch_name before calling script
+if [ -z ${BRANCH+x} ]; 
+    BRANCH="main" # default
+else
+    echo "Running on custom branch $BRANCH"
+fi
 
 SCRIPT_PATH="$(dirname "$(readlink -f "$0")")"
 SCRIPT_NAME="${0##*/}"
