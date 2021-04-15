@@ -22,7 +22,7 @@ echo "========================================================="
 echo ""
 
 # When development, pass env BRANCH=branch_name before calling script
-if [ -z ${BRANCH+x} ]; 
+if [ -z ${BRANCH+x} ]; then
     BRANCH="main" # default
 else
     echo "Running on custom branch $BRANCH"
