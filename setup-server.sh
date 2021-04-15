@@ -125,11 +125,14 @@ fi
 
 cd client
 
-echo "Downloading Dockerfile, Dockerfile.dev, .gitignore, and .dockerignore"
+mkdir nginx
+
+echo "Downloading Dockerfile, Dockerfile.dev, .gitignore, .dockerignore, and nginx conf file"
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/Dockerfile" -qO Dockerfile
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/Dockerfile.dev" -qO Dockerfile.dev
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/.gitignore" -qO .gitignore
 wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/.dockerignore" -qO .dockerignore
+wget "https://raw.githubusercontent.com/NanoCode012/docker-mern/$BRANCH/client/nginx/default.conf" -qO nginx/default.conf
 echo "Downloaded files"
 echo ""
 
