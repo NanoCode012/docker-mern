@@ -8,6 +8,8 @@ This repo aims to create a one-stop script which would allow the setup of a MERN
 - docker-compose
 - wget
 
+Tested working with Ubuntu 20.04
+
 # Setup
 
 ```bash
@@ -27,10 +29,12 @@ Note: Ignore `Git repo not initialized Error: Command failed: git --version` whe
 ## Production
 
 ```bash
-$ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+$ docker-compose -f docker-compose.yml -f docker-compose.prod.yml -f docker-compose.http.yml up -d --build
 ```
 
-Add `-f docker-compose.ssl.yml` for SSL setup
+Add `-f docker-compose.ssl.yml` for SSL setup and remove `-f docker-compose.http.yml`.
+
+_TIP_: Make a bash file that runs the above for you. This functionality will be added later.
 
 ## Development
 
