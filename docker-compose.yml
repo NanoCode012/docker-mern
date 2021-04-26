@@ -9,6 +9,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./nginx
+      args:
+        DOCKER_NGINX_VERSION: ${DOCKER_NGINX_VERSION}
   client:
     container_name: ${CLIENT_NAME}
     build:
