@@ -1,5 +1,6 @@
-# Pull in the from the official nginx image.
-FROM nginx
+ARG DOCKER_NODE_VERSION
+
+FROM node:$DOCKER_NODE_VERSION
 
 EXPOSE 80
 
